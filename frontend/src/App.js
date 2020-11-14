@@ -1,5 +1,5 @@
 import './App.css'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -11,8 +11,12 @@ const App = () => {
             <Header />
             <Container>
                 <main className="py-3">
-                  <Route path="/" component={HomeScreen} exact/>
-                  <Route path="/product/:id" component={ProductScreen} exact/>
+                    <Route path="/" component={HomeScreen} exact />
+                    <Route
+                        path="/product/:id"
+                        component={ProductScreen}
+                        exact
+                    />
                 </main>
             </Container>
             <Footer />
