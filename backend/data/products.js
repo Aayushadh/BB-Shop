@@ -11,7 +11,7 @@ Android v10 operating system with 2.0GHz Mediatek Helio G85 octa core processor 
 Box also includes: Power adapter, USB cable, SIM eject tool, Warranty card, User guide, Clear soft case`,
         brand: 'Amazon',
         category: 'Electronics',
-        price: 29.99,
+        price: 50,
         countInStock: 0,
         rating: 4.5,
         numReviews: 4,
@@ -35,37 +35,47 @@ Make your home smart with Alexa and use voice to control lights, ACs, TVs, geyse
         numReviews: 4,
     },
     {
-        name: 'Amazon Echo',
-        image: '/images/alexa.jpg',
-        description: `sdjlsnnnnnnnnn
-        ackjbbbbbbcajjjjjjj`,
-        brand: 'Amazon',
+        name: 'Boat Earphones',
+        image: '/images/earphone.jpg',
+        description: `Amazing earphones with 1 year warranty`,
+        brand: 'BOAT',
         category: 'Electronics',
-        price: 29.99,
+        price: 10.99,
         countInStock: 12,
         rating: 4,
         numReviews: 4,
     },
     {
-        name: 'Amazon Echo',
-        image: '/images/alexa.jpg',
-        description: `sdjlsnnnnnnnnn
-        ackjbbbbbbcajjjjjjj`,
-        brand: 'Amazon',
+        name: 'MI powerbank',
+        image: '/images/powerbank.jpg',
+        description: `20000mAh Lithium Polymer battery
+18W Fast Charging
+Triple port output
+Dual input port (Micro-USB/USB-C
+Power Delivery
+Advanced 12 Layer chip protection
+Smart power management
+6 months domestic warranty`,
+        brand: 'Mi',
         category: 'Electronics',
-        price: 29.99,
+        price: 15.99,
         countInStock: 12,
         rating: 4,
         numReviews: 4,
     },
     {
-        name: 'Amazon Echo',
-        image: '/images/alexa.jpg',
-        description: `sdjlsnnnnnnnnn
-        ackjbbbbbbcajjjjjjj`,
-        brand: 'Amazon',
+        name: 'pTron bassbuds',
+        image: '/images/bassbuds.jpg',
+        description: `Stereo Sound & Bass
+On-the earbuds multi-function buttons allow calls & music control for a hands-free experience
+1 year manufacturer warranty, customer care number: 040-67138888
+Bluetooth 5.0; 6 Hours Playback Time (Earbuds) & Extended Playtime up to 20 Hours with the Charging Case; 5 Hours of Talk-time; 1.5 Hours Charging Time; 100 Hours of Standby-time
+10m Wireless range; Voice Assistant Support; 400mAh Compact & Portable Charging Case, Micro USB Charging Cable Provided; Up to 2 to 3 Charge Cycles
+These wireless earphones with built-in microphone ensure hands-free music and call management, just press the multi-function buttons (MFB) on the earbuds to enjoy the hands-free experience
+Country of Origin: China`,
+        brand: 'Ptron',
         category: 'Electronics',
-        price: 29.99,
+        price: 9.99,
         countInStock: 12,
         rating: 4,
         numReviews: 4,

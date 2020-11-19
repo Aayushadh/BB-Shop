@@ -18,11 +18,8 @@ const App = () => {
                         component={ProductScreen}
                         exact
                     />
-                    <Route
-                        path="/cart/:id"
-                        component={CartScreen}
-                        exact
-                    />
+                    <Route path="/cart/:id" component={CartScreen} exact />
+                    <Route path="/cart/" component={CartScreen} exact />
                 </main>
             </Container>
             <Footer />
