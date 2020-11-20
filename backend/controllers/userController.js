@@ -32,6 +32,21 @@ const getUserProfile = asyncHandler(async (req, res) => {
         throw new Error('User not found!!')
     }
 })
+
+const updateUserProfile = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.user._id)
+    if (user) {
+        res.json({
+            id: user._id,
+            name: user.name,
+            email: user.email,
+            isAdmin: user.isAdmin,
+        })
+    } else {
+        res.status(401)
+        throw new Error('User not found!!')
+    }
+})
 const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password } = req.body
     const userExists = await User.findOne({ email })
