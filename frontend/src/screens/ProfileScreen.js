@@ -4,7 +4,7 @@ import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import { getUserDetails,updateUserProfile } from '../actions/userActions'
+import { getUserDetails, updateUserProfile } from '../actions/userActions'
 import { userUpdateProfileReducer } from '../reducers/userReducers'
 
 const ProfileScreen = ({ location, history }) => {
@@ -24,7 +24,7 @@ const ProfileScreen = ({ location, history }) => {
 
     const userUpdateProfile = useSelector((state) => state.userUpdateProfile)
     const { success } = userUpdateProfile
-    console.log('success'+success)
+    console.log('success' + success)
 
     useEffect(() => {
         if (!userInfo) {
@@ -39,8 +39,6 @@ const ProfileScreen = ({ location, history }) => {
         }
     }, [userInfo, history, user.name, user.email, dispatch])
 
-    
-
     useEffect(() => {
         if (!userInfo) {
             history.push('/login')
@@ -52,8 +50,7 @@ const ProfileScreen = ({ location, history }) => {
         if (password !== confirmPassword) {
             setMessage("Password doesn't match")
         } else {
-            dispatch(updateUserProfile({id:user._id,name,email,password}))
-           
+            dispatch(updateUserProfile({ id: user._id, name, email, password }))
         }
     }
 
@@ -62,7 +59,9 @@ const ProfileScreen = ({ location, history }) => {
             <Col md={3}>
                 <h2>USER PROFILE</h2>
                 {error && <Message variant="danger">{error}</Message>}
-                {success && <Message variant="success">Updated Successfully</Message>}
+                {success && (
+                    <Message variant="success">Updated Successfully</Message>
+                )}
                 {message && <Message variant="danger">{message}</Message>}
                 {loading && <Loader />}
                 <Form onSubmit={submitHandler}>
@@ -111,7 +110,7 @@ const ProfileScreen = ({ location, history }) => {
                 </Form>
             </Col>
             <Col md={9}>
-          <h2>MY ORDER</h2>
+                <h2>MY ORDER</h2>
             </Col>
         </Row>
     )

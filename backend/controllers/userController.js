@@ -25,7 +25,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
             id: user._id,
             name: user.name,
             email: user.email,
-            
+
             isAdmin: user.isAdmin,
         })
     } else {
@@ -58,7 +58,6 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     }
 })
 
-
 const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password } = req.body
     const userExists = await User.findOne({ email })
@@ -85,4 +84,4 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 })
 
-export { authUser, getUserProfile, registerUser ,updateUserProfile}
+export { authUser, getUserProfile, registerUser, updateUserProfile }
