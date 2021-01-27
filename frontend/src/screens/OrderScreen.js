@@ -21,9 +21,11 @@ const PlaceOrderScreen = ({ match }) => {
       dispatch(getOrderDetails(orderId))
     }, [])
 
+    if(!loading){
     order.itemPrice = putdeci(
         order.orderItems.reduce((acc, item) => acc + item.qty * item.price, 0)
     )
+    }
 
     return loading ? <Loader/>:error ? <Message variant='danger'>{error}</Message>:<>
        <Row>
@@ -32,6 +34,8 @@ const PlaceOrderScreen = ({ match }) => {
                     <ListGroup variant="flush">
                         <ListGroup.Item>
                             <h2>Shipping</h2>
+                            <p><strong>Name: </strong>{order.user.name}</p>
+                             <p><strong>Email: </strong><a href={`mailto:${order.user.email}`}> {order.user.email}</a></p>
                             <p>
                                 <strong>Address:</strong>
                                 <br />
@@ -41,14 +45,17 @@ const PlaceOrderScreen = ({ match }) => {
                                 {order.shippingAddress.country}
                                 <br />
                             </p>
+                            {order.isDelievered ? <Message variant='success'>Delievered on {order.delieveredAt}</Message>:<Message variant='danger'>Not delievered</Message>}
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <h2>Payment Method</h2>
+                        
                             <p>
                                 <strong>Method: </strong>
                                 {order.paymentMethod}
                                 <br />
                             </p>
+                            {order.isPaid ? <Message variant='success'>Paid at {order.paidAt}</Message>:<Message variant='danger'>Not Paid</Message>}
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <h2>Order Items</h2>
