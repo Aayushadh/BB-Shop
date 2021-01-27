@@ -23,5 +23,7 @@ app.use((err, req, res, next) => {
         stack: process.env.NODE_env === 'production' ? null : err.stack,
     })
 })
+
+app.get('/api/config/paypal',(req,res)=>res.send(process.env.PAYPAL_CLIENT_ID))
 const PORT = process.env.PORT
 app.listen(PORT, console.log(`${PORT}`))
