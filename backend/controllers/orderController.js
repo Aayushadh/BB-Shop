@@ -35,47 +35,50 @@ const addOrderItems = asyncHandler(async (req, res) => {
 
 const getOrderById = asyncHandler(async (req, res) => {
     const order = await Order.findById(req.params.id).populate(
-      'user',
-      'name email'
+        'user',
+        'name email'
     )
-  
-    if (order) {
-      res.json(order)
-    } else {
-      res.status(404)
-      throw new Error('Order not found')
-    }
-  })
 
-  const updateOrderToPaid = asyncHandler(async (req, res) => {
+    if (order) {
+        res.json(order)
+    } else {
+        res.status(404)
+        throw new Error('Order not found')
+    }
+})
+
+const updateOrderToPaid = asyncHandler(async (req, res) => {
     const order = await Order.findById(req.params.id)
-    order.isPaid=true
-    order.paidAt=Date.now()
-    order.paymentResult={
-      id:req.body.id,
-      status:req.body.status,
-      update_time:req.body.update_time,
-      email_address:req.body.payer.email_address
-
+    order.isPaid = true
+    order.paidAt = Date.now()
+    order.paymentResult = {
+        id: req.body.id,
+        status: req.body.status,
+        update_time: req.body.update_time,
+        email_address: req.body.payer.email_address,
     }
-  
+
     if (order) {
-      order.isPaid=true
-    order.paidAt=Date.now()
-    order.paymentResult={
-      id:req.body.id,
-      status:req.body.status,
-      update_time:req.body.update_time,
-      email_address:req.body.payer.email_address
+        order.isPaid = true
+        order.paidAt = Date.now()
+        order.paymentResult = {
+            id: req.body.id,
+            status: req.body.status,
+            update_time: req.body.update_time,
+            email_address: req.body.payer.email_address,
+        }
+        const updateOrder = await order.save()
 
-    }
-    const updateOrder = await order.save()
-
-      res.json(updateOrder)
+        res.json(updateOrder)
     } else {
-      res.status(404)
-      throw new Error('Order not found')
+        res.status(404)
+        throw new Error('Order not found')
     }
-  })
+})
 
-export { addOrderItems,getOrderById,updateOrderToPaid}
+const getMyOrders = asyncHandler(async (req, res) => {
+    const orders = await Order.find({ user: req.user._id })
+    res.json(orders)
+})
+
+export { addOrderItems, getOrderById, updateOrderToPaid, getMyOrders }

@@ -41,7 +41,9 @@ const ProductScreen = ({ history, match }) => {
             ) : (
                 <Row>
                     <Col md={6}>
-                        <Image src={product.image} fluid />
+                        <a href={product.image} className="MagicZoom">
+                            <Image src={product.image} fluid />
+                        </a>
                     </Col>
                     <Col md={3}>
                         <ListGroup variant="flush">
