@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import Product from '../components/Product'
 import { listProducts } from '../actions/productActions'
-import Loader from '../components/Loader'
+import Loader from 'react-loader-spinner'
 import Message from '../components/Message'
 const HomeScreen = () => {
     const dispatch = useDispatch()
@@ -19,7 +19,15 @@ const HomeScreen = () => {
         <>
             <h1>Latest Products</h1>
             {loading ? (
-                <Loader />
+                <Col className="text-center">
+                    {' '}
+                    <Loader
+                        type="Puff"
+                        color="#00BFFF"
+                        height={120}
+                        width={120}
+                    />
+                </Col>
             ) : error ? (
                 <Message variant="danger">{error}</Message>
             ) : (

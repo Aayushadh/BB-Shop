@@ -47,16 +47,19 @@ const getOrderById = asyncHandler(async (req, res) => {
     }
 })
 
+const deleteOrder = asyncHandler(async (req, res) => {
+    const order = await Order.findById(req.params.id)
+    if (order) {
+        await order.remove()
+        res.json('Deleted successfully')
+    } else {
+        res.status(404)
+        throw new Error('Order not found')
+    }
+})
+
 const updateOrderToPaid = asyncHandler(async (req, res) => {
     const order = await Order.findById(req.params.id)
-    order.isPaid = true
-    order.paidAt = Date.now()
-    order.paymentResult = {
-        id: req.body.id,
-        status: req.body.status,
-        update_time: req.body.update_time,
-        email_address: req.body.payer.email_address,
-    }
 
     if (order) {
         order.isPaid = true
@@ -76,9 +79,39 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
     }
 })
 
+const updateOrderToDelivered = asyncHandler(async (req, res) => {
+    const order = await Order.findById(req.params.id)
+
+    if (order) {
+        order.isDelieverd = true
+        order.deliveredAt = Date.now()
+        const updateOrder = await order.save()
+        res.json(updateOrder)
+    } else {
+        res.status(404)
+        throw new Error('Order not found')
+    }
+})
+
 const getMyOrders = asyncHandler(async (req, res) => {
     const orders = await Order.find({ user: req.user._id })
     res.json(orders)
 })
 
-export { addOrderItems, getOrderById, updateOrderToPaid, getMyOrders }
+const getAllOrders = asyncHandler(async (req, res) => {
+    const orders = await Order.find({}).populate({
+        path: 'user',
+        select: 'name -_id',
+    })
+    res.json(orders)
+})
+
+export {
+    addOrderItems,
+    getOrderById,
+    updateOrderToPaid,
+    getMyOrders,
+    getAllOrders,
+    updateOrderToDelivered,
+    deleteOrder,
+}

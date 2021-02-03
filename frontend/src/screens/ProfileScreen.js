@@ -4,9 +4,10 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { Form, Button, Row, Col, Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
-import Loader from '../components/Loader'
+import Loader from 'react-loader-spinner'
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
 import { getMyOrders } from '../actions/orderActions'
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
 const ProfileScreen = ({ location, history }) => {
     const [name, setName] = useState('')
@@ -162,9 +163,10 @@ const ProfileScreen = ({ location, history }) => {
                                         )}
                                     </td>
                                     <td>
-                                        {order.isDelivered ? (
+                                        {order.isDelieverd ? (
                                             order.deliveredAt.substring(0, 10)
                                         ) : (
+                                            // <Loader type="Circles" color="red" height={80} width={80}/>
                                             <i
                                                 className="fas fa-times"
                                                 style={{ color: 'red' }}

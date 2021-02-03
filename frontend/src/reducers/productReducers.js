@@ -63,7 +63,7 @@ export const productAddReducer = (state = {}, action) => {
         case PRODUCT_ADD_REQUEST:
             return { loading: true }
         case PRODUCT_ADD_SUCCESS:
-            return { loading: false, successs: true, id:action.payload }
+            return { loading: false, successs: true, id: action.payload }
         case PRODUCT_ADD_FAIL:
             return { loading: false, error: action.payload }
         case PRODUCT_ADD_RESET:
@@ -83,6 +83,6 @@ export const productUpdateReducer = (state = { product: {} }, action) => {
             return { loading: false, error: action.payload }
 
         default:
-            return {loading:false}
+            return { loading: false }
     }
 }

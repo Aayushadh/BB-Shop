@@ -18,7 +18,6 @@ const ProductEditScreen = ({ match, location, history }) => {
     const [image, setImage] = useState('')
     const [countInStock, setCountInStock] = useState(0)
 
-
     const dispatch = useDispatch()
 
     const productDetails = useSelector((state) => state.productDetails)
@@ -28,9 +27,11 @@ const ProductEditScreen = ({ match, location, history }) => {
     const { userInfo } = userLogin
 
     const productUpdate = useSelector((state) => state.productUpdate)
-    const { success, loading: updateLoading, error: updateError } = productUpdate
-
-   
+    const {
+        success,
+        loading: updateLoading,
+        error: updateError,
+    } = productUpdate
 
     useEffect(() => {
         if (!product || product._id !== match.params.id)
@@ -44,16 +45,25 @@ const ProductEditScreen = ({ match, location, history }) => {
             setImage(product.image)
             setCountInStock(product.countInStock)
         }
-        if(success){
+        if (success) {
             window.alert('Updated Successfully !!')
             dispatch(listProductDetails(match.params.id))
         }
-    }, [userInfo, history, product, match, dispatch,success])
+    }, [userInfo, history, product, match, dispatch, success])
 
     const submitHandler = (e) => {
         e.preventDefault()
-        dispatch(updateProduct(match.params.id, { name,description,brand,category,price,image,countInStock }))
-       
+        dispatch(
+            updateProduct(match.params.id, {
+                name,
+                description,
+                brand,
+                category,
+                price,
+                image,
+                countInStock,
+            })
+        )
     }
 
     return (
@@ -84,7 +94,7 @@ const ProductEditScreen = ({ match, location, history }) => {
                     <Form.Group controlId="description">
                         <Form.Label>Description</Form.Label>
                         <Form.Control
-                            as='textarea'
+                            as="textarea"
                             type="textbox"
                             placeholder="Enter Description"
                             value={description}
@@ -137,7 +147,6 @@ const ProductEditScreen = ({ match, location, history }) => {
                         ></Form.Control>
                     </Form.Group>
 
-                 
                     <Button type="submit" variant="primary">
                         Update
                     </Button>

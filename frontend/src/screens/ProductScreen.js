@@ -13,7 +13,7 @@ import Rating from '../components/Rating'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { listProductDetails } from '../actions/productActions'
-import Loader from '../components/Loader'
+import Loader from 'react-loader-spinner'
 import Message from '../components/Message'
 const ProductScreen = ({ history, match }) => {
     const [qty, setqty] = useState(1)

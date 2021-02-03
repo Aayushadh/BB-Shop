@@ -102,8 +102,6 @@ export const updateProduct = (id, product) => async (dispatch, getState) => {
             type: PRODUCT_UPDATE_SUCCESS,
             payload: data,
         })
-
-        
     } catch (error) {
         dispatch({
             type: PRODUCT_UPDATE_FAIL,
@@ -130,11 +128,11 @@ export const addProduct = (id) => async (dispatch, getState) => {
             },
         }
 
-        const data = await axios.post(`/api/products/`,{},config)
+        const data = await axios.post(`/api/products/`, {}, config)
 
         dispatch({
             type: PRODUCT_ADD_SUCCESS,
-            payload:data.data._id,
+            payload: data.data._id,
         })
         dispatch(listProducts())
     } catch (error) {
