@@ -6,14 +6,14 @@ import Product from '../components/Product'
 import { listProducts } from '../actions/productActions'
 import Loader from 'react-loader-spinner'
 import Message from '../components/Message'
-const HomeScreen = () => {
+const HomeScreen = ({ match }) => {
     const dispatch = useDispatch()
     const productList = useSelector((state) => state.productList)
     const { loading, error, products } = productList
 
     useEffect(() => {
-        dispatch(listProducts())
-    }, [dispatch])
+        dispatch(listProducts(match.params.keyword))
+    }, [dispatch, match.params.keyword])
 
     return (
         <>
