@@ -63,7 +63,11 @@ const ProductScreen = ({ history, match }) => {
                     <Row>
                         <Col md={6}>
                             <a href={product.image} className="MagicZoom">
-                                <Image src={product.image} fluid />
+                                <Image
+                                    src={product.image}
+                                    fluid
+                                    className="img-responsive img-rounded"
+                                />
                             </a>
                         </Col>
                         <Col md={3}>
